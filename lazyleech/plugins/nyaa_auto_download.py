@@ -44,7 +44,7 @@ if os.environ.get('DB_URL'):
         for i in cr:
             for ii in ADMIN_CHATS:
                 msg = await app.send_message(ii, f"New Torrent Uploaded\n\n{i[0]}\n{i[1]}")
-                flags = (ForceDocumentFlag,)
+                flags = ()
                 await initiate_torrent(app, msg, i[1], flags)
 
     scheduler = AsyncIOScheduler()
