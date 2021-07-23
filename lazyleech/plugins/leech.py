@@ -27,7 +27,7 @@ from ..utils.aria2 import aria2_add_torrent, aria2_tell_status, aria2_remove, ar
 from ..utils.misc import format_bytes, get_file_mimetype, return_progress_string, calculate_eta, allow_admin_cancel
 from ..utils.upload_worker import upload_queue, upload_statuses, progress_callback_data, upload_waits, stop_uploads
 
-@Client.on_message(filters.command(['torrent', 'ziptorrent', 'filetorrent']) & filters.chat(ALL_CHATS))
+@Client.on_message(filters.command(['torrent', 'ziptorrent', 'd']) & filters.chat(ALL_CHATS))
 async def torrent_cmd(client, message):
     text = (message.text or message.caption).split(None, 1)
     command = text.pop(0).lower()
@@ -74,8 +74,8 @@ async def torrent_cmd(client, message):
 - /ziptorrent <i>&lt;Torrent URL or File&gt;</i>
 - /ziptorrent <i>(as reply to a Torrent URL or File)</i>
 
-- /filetorrent <i>&lt;Torrent URL or File&gt;</i> - Sends videos as files
-- /filetorrent <i>(as reply to a Torrent URL or file)</i> - Sends videos as files''')
+- /d <i>&lt;Torrent URL or File&gt;</i> - Sends videos as files
+- /d <i>(as reply to a Torrent URL or file)</i> - Sends videos as files''')
         return
     await initiate_torrent(client, message, link, flags)
     await message.stop_propagation()
@@ -359,8 +359,8 @@ help_dict['leech'] = ('Leech',
 /ziptorrent <i>&lt;Torrent URL or File&gt;</i>
 /ziptorrent <i>(as reply to a Torrent URL or File)</i>
 
-/filetorrent <i>&lt;Torrent URL or File&gt;</i> - Sends videos as files
-/filetorrent <i>(as reply to a Torrent URL or File)</i> - Sends videos as files
+/d <i>&lt;Torrent URL or File&gt;</i> - Sends videos as files
+/d <i>(as reply to a Torrent URL or File)</i> - Sends videos as files
 
 /magnet <i>&lt;Magnet URL&gt;</i>
 /magnet <i>(as reply to a Magnet URL)</i>
